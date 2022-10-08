@@ -11,7 +11,7 @@ function App() {
   const [favourites, setFavourites] = useState([]);
 
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=c06c0323`;
+    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=c06c0323`;
     const response = await fetch(url);
     const responseJson = await response.json();
     if (responseJson.Search) {
