@@ -49,20 +49,29 @@ function App() {
   return (
     <>
       <Header searchValue={searchValue} setSearch={setSearch} />
-      <main>
-        <Movies
-          title={"Movies"}
-          movies={movies}
-          handleFav={addFavHandler}
-          favComponent={AddFavourites}
-        />
-        <Movies
-          title={"Favourites"}
-          movies={favourites}
-          handleFav={removeFavHandler}
-          favComponent={RemoveFavourites}
-        />
-      </main>
+      {movies.length === 0 && (
+        <main>
+          <div className="container">
+            <p>No movie found</p>
+          </div>
+        </main>
+      )}
+      {movies.length !== 0 && (
+        <main>
+          <Movies
+            title={"Movies"}
+            movies={movies}
+            handleFav={addFavHandler}
+            favComponent={AddFavourites}
+          />
+          <Movies
+            title={"Favourites"}
+            movies={favourites}
+            handleFav={removeFavHandler}
+            favComponent={RemoveFavourites}
+          />
+        </main>
+      )}
     </>
   );
 }
