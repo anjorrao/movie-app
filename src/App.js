@@ -27,7 +27,9 @@ function App() {
     const movieFavourites = JSON.parse(
       localStorage.getItem("react-movie-app-favourites")
     );
-    setFavourites(movieFavourites);
+    if (movieFavourites) {
+      setFavourites(movieFavourites);
+    }
   }, []);
 
   const saveToLocalStorage = (items) => {
@@ -49,29 +51,20 @@ function App() {
   return (
     <>
       <Header searchValue={searchValue} setSearch={setSearch} />
-      {movies.length === 0 && (
-        <main>
-          <div className="container">
-            <p>No movie found</p>
-          </div>
-        </main>
-      )}
-      {movies.length !== 0 && (
-        <main>
-          <Movies
-            title={"Movies"}
-            movies={movies}
-            handleFav={addFavHandler}
-            favComponent={AddFavourites}
-          />
-          <Movies
-            title={"Favourites"}
-            movies={favourites}
-            handleFav={removeFavHandler}
-            favComponent={RemoveFavourites}
-          />
-        </main>
-      )}
+      <main>
+        <Movies
+          title={"Movies"}
+          movies={movies}
+          handleFav={addFavHandler}
+          favComponent={AddFavourites}
+        />
+        <Movies
+          title={"Favourites"}
+          movies={favourites}
+          handleFav={removeFavHandler}
+          favComponent={RemoveFavourites}
+        />
+      </main>
     </>
   );
 }

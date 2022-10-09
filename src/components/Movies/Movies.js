@@ -6,7 +6,7 @@ const Movies = (props) => {
   return (
     <Section>
       <h2>{props.title}</h2>
-      {props.movies.length === 0 && <p>No movies found</p>}
+      {props.movies.length === 0 && <p>No movies found...</p>}
       {props.movies.length !== 0 && (
         <div className={styles["movie-wrapper"]}>
           {props.movies.map((movie, index) => (
